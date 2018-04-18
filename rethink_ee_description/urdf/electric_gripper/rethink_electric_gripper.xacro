@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rethink_electric_gripper">
-  <xacro:macro name="rethink_electric_gripper" params="side r_finger r_finger_slot r_finger_tip r_finger_grasp l_finger l_finger_slot l_finger_tip l_finger_grasp">
+  <xacro:macro name="rethink_electric_gripper" params="side r_finger r_finger_slot r_finger_tip r_finger_grasp l_finger l_finger_slot l_finger_tip l_finger_grasp cue">
     <xacro:property name="gripper_side" value="${side[0]}" scope="local"/>
     <!-- Base of end effector -->
     <link name="${side}_gripper_base">
@@ -59,6 +59,25 @@
         <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0.0"/>
       </inertial>
     </link>
+
+    <xacro:if value="${cue == 'true'}">
+        <!-- joint connecting pool cue -->
+        <joint name="hand_2_cue" type="fixed">
+          <origin rpy="0 0 0" xyz="0 0 0"/>
+          <parent link="${side}_gripper"/>
+          <child link="pool_cue"/>
+        </joint>
+
+        <!-- pool cue -->
+        <link name="pool_cue">
+          <visual name="visual">
+            <pose> 0 0 0 0 0 0 </pose>
+            <geometry>
+              <mesh filename="model://pool_cue/pool_cue.dae"/>
+            </geometry>
+          </visual>
+        </link>
+    </xacro:if>
 
     <!-- Left finger -->
     <xacro:property name="l_finger_offset" value="${((l_finger_slot-1)*0.0095) -0.011}" scope="local"/>

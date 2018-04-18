@@ -9,5 +9,6 @@
                                   r_finger="extended_narrow"
                                   r_finger_slot="2"
                                   r_finger_tip="paddle_tip"
-                                  r_finger_grasp="inner"/>
+                                  r_finger_grasp="inner"
+                                  cue="false"/>
 </robot>
