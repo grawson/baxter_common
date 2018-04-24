@@ -73,7 +73,8 @@
           <visual name="visual">
             <pose> 0 0 0 0 0 0 </pose>
             <geometry>
-              <mesh filename="model://pool_cue/pool_cue.dae"/>
+              <mesh filename="package://rethink_ee_description/meshes/pool_cue/pool_cue.dae"/>
+              <!-- <mesh filename="model://pool_cue/pool_cue.dae"/> -->
             </geometry>
           </visual>
         </link>
