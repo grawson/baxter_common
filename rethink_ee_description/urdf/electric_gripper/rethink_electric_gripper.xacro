@@ -61,23 +61,41 @@
     </link>
 
     <xacro:if value="${cue == 'true'}">
-        <!-- joint connecting pool cue -->
-        <joint name="hand_2_cue" type="fixed">
-          <origin rpy="0 0 0" xyz="0 0 0"/>
-          <parent link="${side}_gripper"/>
-          <child link="pool_cue"/>
-        </joint>
+      <!-- joint connecting pool cue -->
+      <joint name="hand_2_cue" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0.05"/>
+        <parent link="${side}_gripper"/>
+        <child link="pool_cue"/>
+      </joint>
 
-        <!-- pool cue -->
-        <link name="pool_cue">
-          <visual name="visual">
-            <pose> 0 0 0 0 0 0 </pose>
-            <geometry>
-              <mesh filename="package://rethink_ee_description/meshes/pool_cue/pool_cue.dae"/>
-              <!-- <mesh filename="model://pool_cue/pool_cue.dae"/> -->
-            </geometry>
-          </visual>
-        </link>
+      <!-- pool cue -->
+      <link name="pool_cue">
+        <visual name="visual">
+          <pose> 0 0 0 0 0 0 </pose>
+          <geometry>
+            <mesh filename="package://rethink_ee_description/meshes/pool_cue/pool_cue.dae"/>
+            <!-- <mesh filename="model://pool_cue/pool_cue.dae"/> -->
+          </geometry>
+        </visual>
+        <collision>
+          <origin rpy="0 0 0" xyz="0 0 0.9"/>
+          <geometry>
+            <cylinder length="1.31" radius="0.015"/>
+          </geometry>
+          <material name="darkred">
+            <color rgba=".5 .1 .1 1"/>
+          </material>
+        </collision>
+        <!--<collision>-->
+          <!--<origin rpy="0 0 0" xyz="0 0 0.6"/>-->
+          <!--<geometry>-->
+            <!--<cylinder length="1.2" radius="0.02"/>-->
+          <!--</geometry>-->
+          <!--<material name="darkred">-->
+            <!--<color rgba=".5 .1 .1 1"/>-->
+          <!--</material>-->
+        <!--</collision>-->
+      </link>
     </xacro:if>
 
     <!-- Left finger -->
